@@ -2,6 +2,11 @@ import closeButton from './icons/closeButton.svg';
 
 function App() {
 
+  const closeApp = () => {
+    // @ts-ignore
+    window.electron.closeApp();
+  }
+
   return (
     <>
       <div className="flex flex-col h-40 w-200 bg-black/80 rounded-lg backdrop-blur-3xl">
@@ -10,7 +15,7 @@ function App() {
             <p className="text-white font-bold">Assignment Cheater 2.0</p>
           </div>
           <div>
-            <button className="hover:opacity-45 transition-all cursor-pointer"><img src={closeButton} className="w-5" /></button>
+            <button onClick={closeApp} className="hover:opacity-45 transition-all cursor-pointer"><img src={closeButton} className="w-5" /></button>
           </div>
         </nav>
         <div className="flex mt-2">
