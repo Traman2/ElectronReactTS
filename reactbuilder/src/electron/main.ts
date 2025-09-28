@@ -1,5 +1,6 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
 import path from "path";
+
 const createWindow = () => {
   const win = new BrowserWindow({
     autoHideMenuBar: false,
