@@ -8,11 +8,6 @@ const createWindow = () => {
     transparent: true,
     resizable: false,
     show: false,
-    webPreferences: {
-      preload: path.join(app.getAppPath(), '/src/electron/preload.ts'), // 👈 relative to main.js
-      contextIsolation: true,
-      nodeIntegration: false,
-    },
   })
 
   win.loadFile(path.join(app.getAppPath() + '/dist-react/index.html'));
