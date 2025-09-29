@@ -10,9 +10,16 @@ type StaticData = {
     totalMemoryGB: number;
 }
 
-interface Window {
+type EventPaylaodMapping = {
+    statistics: Statistics;
+    getStaticData: StaticData;
+    onClose: any;
+}
+
+interface Window { //Used in frontend through exposed ipc functions
     electron: {
         subscribeStatistics: (callback: (statistics: Statistics) => void) => void;
-        getStaticData: () => Promise<StaticData>
+        getStaticData: () => Promise<StaticData>,
+        onClose: () => any
     }
 }

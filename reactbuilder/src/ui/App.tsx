@@ -1,11 +1,9 @@
-import { useEffect } from 'react';
 import closeButton from './icons/closeButton.svg';
 
 function App() {
-  useEffect(() => {
-    window.electron.subscribeStatistics(stats => console.log(stats));
-  }, [])
-
+  const onClose = () => {
+    window.electron.onClose();
+  }
 
   return (
     <>
@@ -15,7 +13,7 @@ function App() {
             <p className="text-white font-bold">Assignment Cheater 2.0</p>
           </div>
           <div>
-            <button className="hover:opacity-45 transition-all cursor-pointer"><img src={closeButton} className="w-5" /></button>
+            <button onClick={onClose} className="hover:opacity-45 transition-all cursor-pointer"><img src={closeButton} className="w-5" /></button>
           </div>
         </nav>
         <div className="flex mt-2">
