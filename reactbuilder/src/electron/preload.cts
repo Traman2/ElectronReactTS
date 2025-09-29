@@ -1,7 +1,11 @@
-const electron = require("electron");
-const {ipcRenderer}  = require("electron");
+const electron = require('electron') as typeof import('electron');
 
 electron.contextBridge.exposeInMainWorld("electron", {
-    closeApp: () => ipcRenderer.send("close-app")
-}) //add window.electron.closeApp() in close button handler
+    subscribeStatistics: (callback : (statistics: any) => void) => {
+        electron.ipcRenderer.on("statistics", (_, stats) => {
+            callback(stats);
+        })  
+    },
+    getStaticData: () => electron.ipcRenderer.invoke("getStaticData"),
+})
 
