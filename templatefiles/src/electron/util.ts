@@ -4,7 +4,7 @@ export function isDev(): boolean  {
     return process.env.NODE_ENV === "development";
 }
 
-//TypeScript wrapper around ipcfunctions (key and callback function to execute when listner is triggered)
+//TypeScript adapters around ipcfunctions (key and callback function to execute when listner is triggered)
 export function ipcHandle<Key extends keyof EventPaylaodMapping>(
   key: Key, 
   handler: ()=> EventPaylaodMapping[Key]

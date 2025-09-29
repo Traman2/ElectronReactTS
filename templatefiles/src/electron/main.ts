@@ -1,7 +1,6 @@
 import { app, BrowserWindow } from 'electron'
 import path from "path";
 import { ipcHandle, isDev } from './util.js';
-import { getStaticData, pollResources } from './resourceManager.js';
 import { getPreloadPath } from './pathResolver.js';
 
 app.on('ready', () => {
@@ -16,12 +15,6 @@ app.on('ready', () => {
   } else {
     mainWindow.loadFile(path.join(app.getAppPath() + '/dist-react/index.html'));
   }
-
-  pollResources(mainWindow);
-  
-  ipcHandle("getStaticData", () => {
-    return getStaticData();
-  });
 
   ipcHandle("onClose", () => {
     app.quit();
