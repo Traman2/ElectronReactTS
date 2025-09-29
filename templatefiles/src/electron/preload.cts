@@ -1,3 +1,5 @@
+//Expose ipc adapter functions to frontend render side
+
 const electron = require('electron') as typeof import('electron');
 
 electron.contextBridge.exposeInMainWorld("electron", {

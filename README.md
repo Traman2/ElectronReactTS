@@ -92,7 +92,11 @@ import { BrowserWindow } from 'electron';
 const mainWindow = new BrowserWindow({ /* ... */ });
 
 // Example of sending a message to the renderer process
-ipcWebContentSend("update-counter", mainWindow.webContents, 5);
+ipcWebContentSend("update-counter", mainWindow.webContents, {
+    cpuUsage,
+    ramUsage,
+    storageUsage: storageData.usage
+});
 ```
 
 In this example:
