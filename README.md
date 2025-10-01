@@ -1,6 +1,5 @@
 # Electron React TypeScript Template
-
-Extracted this template out of the <a src="https://www.youtube.com/watch?v=fP-371MN0Ck&t=286s">`Electron Course - Code Desktop Application`</a> tutorial
+Comprehensive template with type safety to sync the ipc functions across worlds. Also contains custom adapter functions for easy ipc invoke, on, handle and ipcwebcontentsend creation
 
 ## IPC Custom Adpater Functions
 
@@ -41,13 +40,6 @@ electron.contextBridge.exposeInMainWorld("electron", {
     onUpdateCounter: (callback: (count: number) => void) => ipcOn("update-counter", callback)
 } satisfies Window['electron'])
 ```
-
-In this example:
-- `onUpdateCounter` is the name of the function exposed to the renderer process.
-- `"update-counter"` is the IPC channel used for communication.
-- `callback` is a function that will be executed when a message is received on `"update-counter"` from the main process.
-
-The main process can send messages on `"update-counter"` using `ipcWebContentSend()`.
 
 ### `ipcHandle`
 
@@ -98,8 +90,3 @@ ipcWebContentSend("update-counter", mainWindow.webContents, {
     storageUsage: storageData.usage
 });
 ```
-
-In this example:
-- `"update-counter"` is the IPC channel on which the renderer process is listening (via `ipcOn`).
-- `mainWindow.webContents` specifies which renderer process to send the message to.
-- `5` is the payload being sent to the renderer process.
